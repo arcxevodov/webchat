@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', ['messages' => Message::latest()->get()]);
+    }
+
+    public function sendMessage(Request $request)
+    {
+        Message::create([
+            'user_id' => Auth::user()->id,
+            'content' => $request->text
+        ]);
+        return redirect()->route('home', ['messages' => Message::latest()->get()]);
     }
 }
