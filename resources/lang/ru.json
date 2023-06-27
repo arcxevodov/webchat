@@ -1,0 +1,16 @@
+{
+    "Login": "Войти",
+    "Register": "Регистрация",
+    "Name": "Имя",
+    "Email Address": "E-mail",
+    "Password": "Пароль",
+    "Confirm Password": "Подтвердите пароль",
+    "Verify Your Email Address": "Подтвердите ваш E-mail",
+    "Before proceeding, please check your email for a verification link.": "Прежде чем продолжить, подтвердите почту по ссылке",
+    "If you did not receive the email": "Если вы не получали письмо",
+    "click here to request another": "нажмите, чтобы отправить его заново",
+    "You are logged in!": "Добро пожаловать!",
+    "Logout": "Выйти",
+    "Remember Me": "Запомнить меня",
+    "Forgot Your Password?": "Забыли пароль?"
+}
