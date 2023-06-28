@@ -12,8 +12,13 @@
         </form>
         <div>
             @foreach($messages as $msg)
-                <b>{{ \Illuminate\Support\Facades\DB::table('users')->where('id', '=', $msg->user_id)->get()->first()->name }}</b>
-                <p>{{ $msg->content }}</p>
+                <div class="row p-3">
+                    <img src="{{ asset('default_avatar.png') }}" alt="User" width="50" class="col align-self-start col-1">
+                    <div class="row col align-self-end">
+                        <b class="col align-self-center">{{ \Illuminate\Support\Facades\DB::table('users')->where('id', '=', $msg->user_id)->get()->first()->name }}</b>
+                        <p class="">{{ $msg->content }}</p>
+                    </div>
+                </div>
             @endforeach
         </div>
     </div>
