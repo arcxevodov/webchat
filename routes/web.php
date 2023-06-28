@@ -23,3 +23,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/send', [\App\Http\Controllers\HomeController::class, 'sendMessage'])->name('send');
+
+Route::get('/{user}', [\App\Http\Controllers\UserController::class, 'index'])->name('user');
