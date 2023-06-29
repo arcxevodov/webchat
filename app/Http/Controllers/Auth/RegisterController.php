@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class RegisterController extends Controller
 {
@@ -66,9 +67,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(request()->hasfile('avatar')){
-            $avatarName = time().'.'.request()->avatar->getClientOriginalExtension();
-            request()->avatar->move(public_path('img'), $avatarName);
+        if(request()->hasfile('avatar') ){
+            $avatar = request()->avatar;
+            $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
+            $avatarPath = public_path('img/' . $avatarName);
+            Image::make($avatar->getRealPath())->resize(200, 200)->save($avatarPath);
         }
         return User::create([
             'name' => $data['name'],
