@@ -48,6 +48,99 @@
         }
     </script>
 
+    <style>
+        @media not screen and (min-width: 800px) {
+            html {
+                font-size: 15px;
+            }
+            .card-header {
+                width: 100%;
+            }
+            .card-body {
+                width: 100%;
+            }
+            .avatar img {
+                width: 30px;
+                position: relative;
+                top: 42px;
+                left: 15px;
+                z-index: 1;
+            }
+            .username {
+                position: relative;
+                left: 35px;
+            }
+            .messages-content {
+                display: flex;
+                flex-direction: column;
+            }
+            .messages-content__wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        @media not screen and (min-width: 700px) {
+            html {
+                font-size: 15px;
+            }
+            .card-header {
+                width: 100%;
+            }
+            .card-body {
+                width: 100%;
+            }
+            .avatar img {
+                width: 30px;
+                position: relative;
+                top: 42px;
+                left: 15px;
+                z-index: 1;
+            }
+            .username {
+                position: relative;
+                left: 35px;
+            }
+            .messages-content {
+                display: flex;
+                flex-direction: column;
+            }
+            .messages-content__wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        @media not screen and (min-width: 500px) {
+            html {
+                font-size: 13px;
+            }
+            .card-header {
+                width: 100%;
+            }
+            .card-body {
+                width: 100%;
+            }
+            .avatar img {
+                width: 30px;
+                position: relative;
+                top: 39px;
+                left: 13px;
+                z-index: 1;
+            }
+            .username {
+                position: relative;
+                left: 35px;
+            }
+            .messages-content {
+                display: flex;
+                flex-direction: column;
+            }
+            .messages-content__wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
