@@ -24,7 +24,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/{user}', [UserController::class, 'index'])->name('user');
-
 Route::get('/send', [HomeController::class, 'sendMessage'])->name('send');
 Route::get('/del/{message}', [HomeController::class, 'deleteMessage'])->name('del');
+Route::get('/{user}', [UserController::class, 'index'])->name('user');
