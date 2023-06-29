@@ -9,6 +9,7 @@
         <div class="input-group fixed-bottom p-3 bg-white shadow w-75 m-auto mb-5 border rounded-4">
             <input type="text" name="text" id="message" class="form-control rounded border-0 me-3" placeholder="{{ __("Enter a message") }}" aria-label="{{ __("Enter a message") }}" aria-describedby="basic-addon2">
             <div class="input-group-append">
+                <!-- {{ csrf_field() }} -->
                 <button
                     id="sendButton"
                     class="btn btn-warning rounded text-white shadow-sm"

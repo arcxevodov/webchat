@@ -26,5 +26,5 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/{user}', [UserController::class, 'index'])->name('user');
 
-Route::post('/send', [HomeController::class, 'sendMessage'])->name('send');
-Route::delete('/del/{message}', [HomeController::class, 'deleteMessage'])->name('del');
+Route::get('/send', [HomeController::class, 'sendMessage'])->name('send');
+Route::get('/del/{message}', [HomeController::class, 'deleteMessage'])->name('del');

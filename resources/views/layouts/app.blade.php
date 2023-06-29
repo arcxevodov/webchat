@@ -21,7 +21,7 @@
             let inputText = $('#message').val()
             $.ajax({
                 url: url,
-                method: 'post',
+                method: 'get',
                 dataType: 'html',
                 data: {
                     text: inputText
@@ -36,7 +36,7 @@
             let inputText = $('#message').val()
             $.ajax({
                 url: url,
-                method: 'post',
+                method: 'get',
                 dataType: 'html',
                 data: {
                     text: inputText
