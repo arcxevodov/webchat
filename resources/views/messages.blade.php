@@ -20,7 +20,9 @@
                 </div>
                 <div class="my-auto">
                     <p class="text-muted mb-0 mx-2 my-auto mx-12">{{ $msg->created_at->format('H:i') }}</p>
-                    <button class="link-underline link-underline-opacity-0 link-danger btn btn-sm" onclick="deleteMessage('{{ route('del', ['message' => $msg->id]) }}')">Удалить</button>
+                    @if($msg->user_id === Auth::user()->id)
+                        <button class="link-underline link-underline-opacity-0 link-danger btn btn-sm" onclick="deleteMessage('{{ route('del', ['message' => $msg->id]) }}')">Удалить</button>
+                    @endif
                 </div>
             </div>
         </div>
