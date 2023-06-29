@@ -1,12 +1,12 @@
-@foreach($messages as $msg)
+@foreach($messages->reverse() as $msg)
     @php($msg_user = \Illuminate\Support\Facades\DB::table('users')->where('id', '=', $msg->user_id)->get()->first())
     @php($user_avatar = $msg_user->avatar)
     <div class="row p-3 messages-divs">
         <div class="d-flex justify-content-between align-self-center">
             <div class="d-flex justify-content-between mb-4">
                 <img src="{{ asset($user_avatar) }}" alt="avatar"
-                     class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                <div class="card">
+                     class="rounded-circle d-flex align-self-start me-3 shadow-sm" width="60">
+                <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between p-3">
                         <p class="fw-bold mb-0 mx-2">{{ $msg_user->name }}</p>
                         <p class="text-muted small mb-0 mx-2">{{ $msg->created_at->format('H:i') }}</p>
