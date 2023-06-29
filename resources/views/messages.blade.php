@@ -4,11 +4,14 @@
     <div class="row p-3 messages-divs">
         <div class="d-flex justify-content-between align-self-center">
             <div class="d-flex justify-content-between mb-4">
-                <img src="{{ asset($user_avatar) }}" alt="avatar"
-                     class="rounded-circle d-flex align-self-start me-3 shadow-sm" width="60">
+                <a href="{{ route('user', ['user' => $msg_user->id]) }}">
+                    <img src="{{ asset($user_avatar) }}" alt="avatar"
+                         class="rounded-circle d-flex align-self-start me-3 shadow-sm" width="60">
+                </a>
+
                 <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0 mx-2">{{ $msg_user->name }}</p>
+                        <a href="{{ route('user', ['user' => $msg_user->id]) }}" class="fw-bold mb-0 mx-2 text-black link-underline link-underline-opacity-0">{{ $msg_user->name }}</a>
                         <p class="text-muted small mb-0 mx-2">{{ $msg->created_at->format('H:i') }}</p>
                     </div>
                     <div class="card-body">
