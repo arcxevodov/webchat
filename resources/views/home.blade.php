@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center m-4">
-        <div class="p-3 overflow-y-scroll" style="height: 100vh; margin-bottom: 80px" id="messages">
+        <div class="p-3 my-5" id="messages">
             @include('messages')
         </div>
         <div class="input-group fixed-bottom p-3 bg-white shadow w-75 m-auto mb-5 border rounded-4">
