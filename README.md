@@ -24,8 +24,7 @@
 ## Запуск локально
 Установим зависимости Composer:
 ```bash
-composer update
-composer install laravel/ui
+composer install
 ```
 Нам потребуется установленный ```SQLite``` на локальной машине\
 В папке ```database``` создаем пустой файл ```data.sqlite```\
