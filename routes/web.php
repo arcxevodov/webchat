@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +23,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/send', [\App\Http\Controllers\HomeController::class, 'sendMessage'])->name('send');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/{user}', [UserController::class, 'index'])->name('user');
 
-Route::get('/{user}', [\App\Http\Controllers\UserController::class, 'index'])->name('user');
+Route::post('/send', [HomeController::class, 'sendMessage'])->name('send');
+Route::delete('/del/{message}', [HomeController::class, 'deleteMessage'])->name('del');

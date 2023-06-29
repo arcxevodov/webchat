@@ -19,24 +19,3 @@
     </div>
 </div>
 @endsection
-
-<script>
-    setInterval(() => {
-        $('#messages').load('#messages .messages-divs')
-    }, 1000)
-    async function messageSend(url) {
-        let inputText = $('#message').val()
-        $.ajax({
-            url: url,
-            method: 'get',
-            dataType: 'html',
-            data: {
-                text: inputText
-            },
-            success: function (data) {
-                $('#messages').load('#messages .messages-divs')
-                $('#message').val('')
-            }
-        })
-    }
-</script>

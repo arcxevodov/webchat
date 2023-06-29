@@ -36,4 +36,9 @@ class HomeController extends Controller
         ]);
         return redirect()->route('home', ['messages' => Message::latest()->get()]);
     }
+
+    public function deleteMessage(Request $request, Message $message) {
+        $message->delete();
+        return redirect()->route('home', ['messages' => Message::latest()->get()]);
+    }
 }
