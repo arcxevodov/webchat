@@ -14,6 +14,18 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <script>
+        let checkUpdates = () => {
+            let messageCount = $('.messages-divs').length
+            $.ajax({
+                url: '{{ route('messages-count') }}',
+                method: 'post',
+                success: (data) => {
+                    if (+messageCount !== +data) {
+                        $('#messages').load('#messages .messages-divs')
+                    }
+                }
+            })
+        }
         async function messageSend(url) {
             let inputText = $('#message').val()
             $.ajax({
@@ -43,6 +55,7 @@
                 }
             })
         }
+        setInterval(checkUpdates, 10000)
     </script>
 
     <style>
