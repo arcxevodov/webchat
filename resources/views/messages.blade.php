@@ -10,7 +10,7 @@
                 </a>
                 <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between p-3">
-                        <a href="{{ route('user', ['user' => $msg_user->id]) }}" class="fw-bold mb-0 mx-2 text-black link-underline link-underline-opacity-0 username">{{ $msg_user->name }}</a>
+                        <p class="fw-bold mb-0 mx-2 text-black link-underline link-underline-opacity-0 username">{{ $msg_user->name }}</p>
                     </div>
                     <div class="card-body">
                         <p class="mb-0">
@@ -28,7 +28,3 @@
         </div>
     </div>
 @endforeach
-
-<script>
-
-</script>

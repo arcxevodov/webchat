@@ -14,9 +14,6 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <script>
-        setInterval(() => {
-            $('#messages').load('#messages .messages-divs')
-        }, 1000)
         async function messageSend(url) {
             let inputText = $('#message').val()
             $.ajax({
