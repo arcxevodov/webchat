@@ -55,7 +55,7 @@
                 }
             })
         }
-        setInterval(checkUpdates, 10000)
+        setInterval(checkUpdates, 1000)
     </script>
 
     <style>
