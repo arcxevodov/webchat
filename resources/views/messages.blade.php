@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-between mb-4 messages-content">
                 <div class="avatar" data-bs-toggle="modal" data-bs-target="#userModal_{{ $msg->user_id }}">
                     <img src="{{ asset($user_avatar) }}" alt="avatar"
-                         class="rounded-circle d-flex align-self-start me-3 shadow-sm" width="60">
+                         class="rounded-circle d-flex align-self-start me-3 shadow" width="60">
                 </div>
                 <div class="modal fade" id="userModal_{{ $msg->user_id }}" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -34,9 +34,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card shadow-sm">
+                <div class="card shadow">
                     <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0 mx-2 text-black link-underline link-underline-opacity-0 username">{{ $msg_user->name }}</p>
+                        <p class="fw-bold mb-0 mx-2 username">{{ $msg_user->name }}</p>
                     </div>
                     <div class="card-body">
                         <p class="mb-0">
