@@ -32,6 +32,3 @@ Route::get('/send', [HomeController::class, 'sendMessage'])
 Route::get('/del/{message}', [HomeController::class, 'deleteMessage'])
     ->name('del')
     ->middleware('can:deleteMessage,message');
-
-Route::get('/{user}', [UserController::class, 'index'])
-    ->name('user');

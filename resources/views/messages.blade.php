@@ -1,13 +1,39 @@
 @foreach($messages->reverse() as $msg)
     @php($msg_user = \Illuminate\Support\Facades\DB::table('users')->where('id', '=', $msg->user_id)->get()->first())
+    @php($messages_count = \App\Models\Message::where('user_id', '=', $msg->user_id)->count())
     @php($user_avatar = $msg_user->avatar)
     <div class="row p-3 messages-divs">
         <div class="d-flex justify-content-between align-self-center messages-content__wrapper">
             <div class="d-flex justify-content-between mb-4 messages-content">
-                <a href="{{ route('user', ['user' => $msg_user->id]) }}" class="avatar">
+                <div class="avatar" data-bs-toggle="modal" data-bs-target="#userModal_{{ $msg->user_id }}">
                     <img src="{{ asset($user_avatar) }}" alt="avatar"
                          class="rounded-circle d-flex align-self-start me-3 shadow-sm" width="60">
-                </a>
+                </div>
+                <div class="modal fade" id="userModal_{{ $msg->user_id }}" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="userModalLabel">Информация о пользователе</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container mt-3">
+                                    <div class="d-flex mt-3">
+                                        <img src="{{ asset($msg_user->avatar) }}" alt="User" class="rounded-circle d-flex align-self-start me-3 shadow-sm w-50">
+                                        <div class="row m-3">
+                                            <p><b>Имя: </b>{{ $msg_user->name }}</p>
+                                            <p><b>E-Mail: </b>{{ $msg_user->email }}</p>
+                                            <p><b>Сообщений отправлено: </b>{{ $messages_count }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between p-3">
                         <p class="fw-bold mb-0 mx-2 text-black link-underline link-underline-opacity-0 username">{{ $msg_user->name }}</p>
