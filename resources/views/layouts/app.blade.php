@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script>
         let checkUpdates = () => {
@@ -28,6 +29,21 @@
         }
         async function messageSend(url) {
             let inputText = $('#message').val()
+            $.ajax({
+                url: url,
+                method: 'get',
+                dataType: 'html',
+                data: {
+                    text: inputText
+                },
+                success: function (data) {
+                    $('#messages').load('#messages .messages-divs')
+                    $('#message').val('')
+                }
+            })
+        }
+        async function editMessage(url, id) {
+            let inputText = $('#message-text_' + id).val()
             $.ajax({
                 url: url,
                 method: 'get',

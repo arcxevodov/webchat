@@ -5,12 +5,12 @@
     <div class="row p-3 messages-divs">
         <div class="d-flex justify-content-between align-self-center messages-content__wrapper">
             <div class="d-flex justify-content-between mb-4 messages-content">
-                <div class="avatar" data-bs-toggle="modal" data-bs-target="#userModal_{{ $msg->user_id }}">
+                <div class="avatar " data-bs-toggle="modal" data-bs-target="#userModal_{{ $msg->user_id }}">
                     <img src="{{ asset($user_avatar) }}" alt="avatar"
                          class="rounded-circle d-flex align-self-start me-3 shadow" width="60">
                 </div>
                 <div class="modal fade" id="userModal_{{ $msg->user_id }}" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="userModalLabel">Информация о пользователе</h1>
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Закрыть</button>
+                                <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Закрыть</button>
                             </div>
                         </div>
                     </div>
@@ -37,6 +37,7 @@
                 <div class="card shadow">
                     <div class="card-header d-flex justify-content-between p-3">
                         <p class="fw-bold mb-0 mx-2 username">{{ $msg_user->name }}</p>
+                        <p class="text-muted mb-0 mx-2 my-auto mx-12">{{ $msg->created_at->format('H:i') }}</p>
                     </div>
                     <div class="card-body">
                         <p class="mb-0">
@@ -45,10 +46,42 @@
                     </div>
                 </div>
                 <div class="my-auto">
-                    <p class="text-muted mb-0 mx-2 my-auto mx-12">{{ $msg->created_at->format('H:i') }}</p>
                     @if($msg->user_id === Auth::user()->id)
-                        <button class="link-underline link-underline-opacity-0 link-danger btn btn-sm" onclick="deleteMessage('{{ route('del', ['message' => $msg->id]) }}')">Удалить</button>
+                        <div class="row">
+                            <button
+                                class="link-underline link-underline-opacity-0 link-danger btn btn-sm"
+                                onclick="deleteMessage('{{ route('del', ['message' => $msg->id]) }}')">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                            <button
+                                class="link-underline link-underline-opacity-0 link-warning btn btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#messageModal_{{ $msg->id }}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </div>
                     @endif
+                </div>
+                <div class="modal fade" id="messageModal_{{ $msg->id }}" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="messageModalLabel">Изменить сообщение</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    @csrf
+                                    <div class="mb-3">
+                                        <textarea class="form-control" id="message-text_{{ $msg->id }}">{{ $msg->content }}</textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
+                                <button type="button" data-bs-dismiss="modal" onclick="editMessage('{{ route('edit', ['message' => $msg->id]) }}', {{ $msg->id }})" class="btn btn-outline-warning">Изменить</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

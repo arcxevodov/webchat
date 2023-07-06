@@ -32,3 +32,7 @@ Route::get('/send', [HomeController::class, 'sendMessage'])
 Route::get('/del/{message}', [HomeController::class, 'deleteMessage'])
     ->name('del')
     ->middleware('can:deleteMessage,message');
+
+Route::get('/edit/{message}', [HomeController::class, 'editMessage'])
+    ->name('edit')
+    ->middleware('can:editMessage,message');

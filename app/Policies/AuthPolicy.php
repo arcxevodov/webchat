@@ -11,4 +11,9 @@ class AuthPolicy
     {
         return $user->id === $message->user_id;
     }
+
+    public function editMessage(User $user, Message $message): bool
+    {
+        return $user->id === $message->user_id;
+    }
 }
