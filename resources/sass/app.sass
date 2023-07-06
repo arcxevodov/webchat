@@ -1,0 +1,38 @@
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts'
+
+@import url('https://fonts.googleapis.com/css?family=Nunito')
+@import '@fortawesome/fontawesome-free/scss/fontawesome'
+@import '@fortawesome/fontawesome-free/scss/brands'
+@import '@fortawesome/fontawesome-free/scss/solid'
+@import 'bootstrap/scss/bootstrap'
+
+html
+    @media not screen and (min-width: 800px)
+        font-size: 15px
+    @media not screen and (min-width: 500px)
+        font-size: 13px
+
+.card-header, .card-body
+    @media not screen and (min-width: 800px)
+        width: 100%
+
+.avatar img
+    @media not screen and (min-width: 800px)
+        width: 30px
+        position: relative
+        top: 42px
+        left: 15px
+        z-index: 1
+    @media not screen and (min-width: 500px)
+        top: 39px
+        left: 13px
+
+.username
+    @media not screen and (min-width: 800px)
+        position: relative
+        left: 35px
+
+.messages-content, .messages-content__wrapper
+    @media not screen and (min-width: 800px)
+        display: flex
+        flex-direction: column

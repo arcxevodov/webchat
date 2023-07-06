@@ -1,4 +1,5 @@
 import './bootstrap';
+
 $('#editMessageForm').on('submit', (e) => {
     e.preventDefault();
     let inputText = $('#editMessageForm textarea').val()
@@ -17,6 +18,7 @@ $('#editMessageForm').on('submit', (e) => {
         }
     })
 })
+
 $('#deleteMessageForm').on('submit', (e) => {
     e.preventDefault();
     $.ajax({
@@ -31,6 +33,7 @@ $('#deleteMessageForm').on('submit', (e) => {
         }
     });
 })
+
 $('#sendMessageForm').on('submit', (e) => {
     e.preventDefault();
     let inputText = $('#message').val()
@@ -48,3 +51,16 @@ $('#sendMessageForm').on('submit', (e) => {
         },
     })
 })
+
+setInterval(() => {
+    let messageCount = $('.messages-divs').length
+    $.ajax({
+        url: '/api/messages_count',
+        method: 'post',
+        success: (data) => {
+            if (+messageCount !== +data) {
+                $('#messages').load('#messages .messages-divs')
+            }
+        }
+    })
+}, 1000)

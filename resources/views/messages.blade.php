@@ -45,7 +45,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="my-auto">
+                <div class="my-auto user-actions">
                     @if($msg->user_id === Auth::user()->id)
                         <div class="row">
                             <form action="#" method="post" id="deleteMessageForm">
