@@ -38,13 +38,17 @@ class HomeController extends Controller
         return redirect()->route('home', ['messages' => Message::latest()->get()]);
     }
 
-    public function deleteMessage(Message $message) {
+    public function deleteMessage(Request $request) {
+        $message = Message::where('id', $request['id'])->latest();
         $message->delete();
+        $message->save();
         return redirect()->route('home', ['messages' => Message::latest()->get()]);
     }
 
-    public function editMessage(Request $request, Message $message) {
+    public function editMessage(Request $request) {
+        $message = Message::where('id', $request['id'])->latest();
         $message->content = $request['text'];
         $message->save();
+        return redirect()->route('home', ['messages' => Message::latest()->get()]);
     }
 }

@@ -48,11 +48,14 @@
                 <div class="my-auto">
                     @if($msg->user_id === Auth::user()->id)
                         <div class="row">
-                            <button
-                                class="link-underline link-underline-opacity-0 link-danger btn btn-sm"
-                                onclick="deleteMessage('{{ route('del', ['message' => $msg->id]) }}')">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
+                            <form action="#" method="post" id="deleteMessageForm">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" id="deleteUrl" value="{{ route('del', ['id' => $msg->id]) }}">
+                                <button class="link-underline link-underline-opacity-0 link-danger btn btn-sm" type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
                             <button
                                 class="link-underline link-underline-opacity-0 link-warning btn btn-sm"
                                 data-bs-toggle="modal" data-bs-target="#messageModal_{{ $msg->id }}">
@@ -63,24 +66,26 @@
                 </div>
                 <div class="modal fade" id="messageModal_{{ $msg->id }}" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                        <form action="#" class="modal-content" id="editMessageForm" method="post">
+                            @csrf
+                            @method('PATCH')
+                            <input type="hidden" id="editUrl" value="{{ route('edit', ['id' => $msg->id]) }}">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="messageModalLabel">Изменить сообщение</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form>
-                                    @csrf
+                                <div>
                                     <div class="mb-3">
                                         <textarea class="form-control" id="message-text_{{ $msg->id }}">{{ $msg->content }}</textarea>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
-                                <button type="button" data-bs-dismiss="modal" onclick="editMessage('{{ route('edit', ['message' => $msg->id]) }}', {{ $msg->id }})" class="btn btn-outline-warning">Изменить</button>
+                                <button type="submit" data-bs-dismiss="modal" class="btn btn-outline-warning">Изменить</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

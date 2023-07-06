@@ -26,13 +26,11 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])
     ->name('home');
 
-Route::get('/send', [HomeController::class, 'sendMessage'])
+Route::post('/home', [HomeController::class, 'sendMessage'])
     ->name('send');
 
-Route::get('/del/{message}', [HomeController::class, 'deleteMessage'])
-    ->name('del')
-    ->middleware('can:deleteMessage,message');
+Route::delete('/home', [HomeController::class, 'deleteMessage'])
+    ->name('del');
 
-Route::get('/edit/{message}', [HomeController::class, 'editMessage'])
-    ->name('edit')
-    ->middleware('can:editMessage,message');
+Route::patch('/home', [HomeController::class, 'editMessage'])
+    ->name('edit');
